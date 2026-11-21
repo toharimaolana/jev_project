@@ -33,6 +33,21 @@ SAMPLE_TICKETS = [
 ]
 
 # Questions write here, yaa
+QUESTIONS = {
+    "department": Choice(
+        instructions="Which team should handle this support ticket?",
+        criteria={
+            "technical": "Bugs, errors, or an integration that is not working",
+            "billing": "Payments, double charges, refunds, or invoices",
+            "sales": "Prices, plans, discounts, or buying questions",
+        },
+    ),
+    "frustration": Score(
+        instructions="How frustrated is the customer?",
+        criteria=["Calm", "Annoyed", "Very frustrated"],
+    ),
+    "is_urgent": Noul(instructions="Does this ticket need a reply today?"),
+}
 
 
 def classify(client: TypeSafeClient, ticket: str) -> None:
